@@ -1,0 +1,67 @@
+{
+  "name": "亞洲影劇串流地圖",
+  "short_name": "影劇地圖",
+  "description": "合法正版平台優先 + 非正規資源觀察名單 — 僅供認識網路生態、研究參考。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f6fc",
+  "theme_color": "#1f2b46",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%231f2b46' width='192' height='192'/><text x='50%' y='50%' font-size='120' font-weight='bold' fill='%23ff9800' text-anchor='middle' dominant-baseline='central'>📺</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%231f2b46' width='512' height='512'/><text x='50%' y='50%' font-size='320' font-weight='bold' fill='%23ff9800' text-anchor='middle' dominant-baseline='central'>📺</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%231f2b46' width='192' height='192' rx='40'/><text x='50%' y='50%' font-size='120' font-weight='bold' fill='%23ff9800' text-anchor='middle' dominant-baseline='central'>📺</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%231f2b46' width='512' height='512' rx='100'/><text x='50%' y='50%' font-size='320' font-weight='bold' fill='%23ff9800' text-anchor='middle' dominant-baseline='central'>📺</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["entertainment", "productivity"],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'><rect fill='%23f4f6fc' width='540' height='720'/><text x='50%' y='100' font-size='48' font-weight='bold' fill='%231f2b46' text-anchor='middle'>📺 影劇地圖</text></svg>",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1280 720'><rect fill='%23f4f6fc' width='1280' height='720'/><text x='50%' y='100' font-size='72' font-weight='bold' fill='%231f2b46' text-anchor='middle'>📺 亞洲影劇串流地圖</text></svg>",
+      "sizes": "1280x720",
+      "type": "image/svg+xml",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "正版平台",
+      "short_name": "正版",
+      "description": "合法正版影音平台",
+      "url": "/?tab=legal",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%230b5e42' width='192' height='192' rx='40'/><text x='50%' y='50%' font-size='120' font-weight='bold' fill='%23white' text-anchor='middle' dominant-baseline='central'>✓</text></svg>",
+          "sizes": "192x192",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ]
+}
