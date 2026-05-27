@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>影視迷航 · 亞洲影劇串流資源清單</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f6fc;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      padding: 2rem 1.2rem;
+      color: #111827;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .hero h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      background: linear-gradient(145deg, #1f2b46, #2c3e66);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .sub {
+      font-size: 0.9rem;
+      color: #4b5563;
+      border-left: 3px solid #ff9800;
+      padding-left: 0.8rem;
+      margin-top: 0.4rem;
+      background: #fff6e5;
+      border-radius: 12px;
+      padding: 0.7rem 1rem;
+    }
+
+    .warning-banner {
+      background: #ffefdb;
+      border-radius: 24px;
+      padding: 0.8rem 1.2rem;
+      margin: 1rem 0 1.8rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      border: 1px solid #ffd9a5;
+    }
+
+    .warning-banner i {
+      font-size: 1.2rem;
+      color: #e67e22;
+    }
+
+    .site-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .site-item {
+      background: white;
+      border-radius: 20px;
+      padding: 0.9rem 1.2rem;
+      transition: all 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border: 1px solid #eef2f9;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    .site-info {
+      flex: 3;
+      min-width: 180px;
+    }
+
+    .site-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 0.2rem;
+    }
+
+    /* 標籤風格 — 區分正版 / 高風險 / 中高風險 */
+    .badge-legal {
+      font-size: 0.65rem;
+      font-weight: 600;
+      background: #e0f2e9;
+      color: #0b5e42;
+      padding: 0.2rem 0.65rem;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-risk {
+      font-size: 0.65rem;
+      font-weight: 600;
+      background: #ffe6e5;
+      color: #b91c1c;
+      padding: 0.2rem 0.65rem;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-mid {
+      background: #fff0db;
+      color: #b45f06;
+    }
+
+    .site-desc {
+      font-size: 0.82rem;
+      color: #2c3e50;
+      line-height: 1.4;
+      margin-top: 4px;
+    }
+
+    .site-link {
+      background: #f0f2f8;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-family: monospace;
+      word-break: break-all;
+      color: #1f3a6b;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.1s;
+      border: 1px solid #dee4ef;
+      white-space: nowrap;
+    }
+
+    .site-link:hover {
+      background: #e6e9f2;
+      border-color: #bac8dc;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0.8rem 0 0.6rem 0;
+      padding-left: 0.3rem;
+      color: #2c3e66;
+      border-left: 4px solid #ff9800;
+    }
+
+    .small-note {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.7rem;
+      color: #6b7280;
+      background: #eef2fa;
+      padding: 1rem;
+      border-radius: 40px;
+    }
+
+    hr {
+      margin: 0.6rem 0;
+      border: 0;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    @media (max-width: 650px) {
+      body {
+        padding: 1rem;
+      }
+      .site-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .site-link {
+        white-space: normal;
+        text-align: center;
+        width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1>📺 亞洲影劇 · 串流地圖</h1>
+    <div class="sub">
+      🎬 合法正版平台優先 + 非正規資源觀察名單 — 僅供認識網路生態、研究參考。非正規網站含廣告/惡意軟體/追蹤器，風險自負。
+    </div>
+  </div>
+
+  <div class="warning-banner">
+    <i class="fas fa-shield-alt"></i>
+    <span><strong>⚠️ 資安與法律提醒</strong> 正版平台相對安全；灰色地帶網站常有彈窗、釣魚或挖礦腳本。點擊非正規連結前建議使用擋廣告擴充、勿輸入個資，並留意版權風險。</span>
+  </div>
+
+  <!-- 更新後排序：亞洲友善內容擺置最前 (正版 + 知名亞洲影劇免費/混合站) -->
+  <div class="site-list">
+    <!-- 1. iQiyi 愛奇藝 (正版, 亞洲內容豐富) -->
+    <div class="site-item">
+      <div class="site-info">
+        <div class="site-name">
+          iQiyi 愛奇藝 · 正版陸韓劇
+          <span class="badge-legal">官方授權｜部分免費</span>
+        </div>
+        <div class="site-desc">亞洲最大正版影音平台之一，陸劇、韓劇、台劇、動漫、綜藝豐富。提供免費觀看區（含廣告），畫質穩定無惡意軟體，繁體中文介面友善。</div>
+      </div>
+      <a href="https://www.iq.com" class="site-link" target="_blank" rel="noopener noreferrer">iQ.com 戲劇館</a>
+    </div>
+
+    <!-- 2. LiTV 立視線上影視 (正版, 台灣/陸劇/韓劇) -->
+    <div class="site-item">
+      <div class="site-info">
+        <div class="site-name">
+          LiTV 線上影視
+          <span class="badge-legal">正版｜合法串流</span>
+        </div>
+        <div class="site-desc">台灣合法OTT，提供大量台劇、陸劇、韓劇、動漫與電影。部分內容可免費觀看，介面乾淨，無侵入式廣告。</div>
+      </div>
+      <a href="https://www.litv.tv" class="site-link" target="_blank" rel="noopener noreferrer">litv.tv 戲劇頻道</a>
+    </div>
+
+    <!-- 3. Hami Video 中華電信 (正版, 陸劇/台劇/韓綜) -->
+    <div class="site-item">
+      <div class="site-info">
+        <div class="site-name">
+          Hami Video 影劇館⁺
+          <span class="badge-legal">官方平台｜高畫質</span>
+        </div>
+        <div class="site-desc">中華電信正版影音服務，陸劇、台劇、韓劇、動漫齊全，提供免費試看區與單點/月租，安全無毒，亞洲內容深度友好。</div>
+      </div>
+      <a href="https://hamivideo.hinet.net" class="site-link" target="_blank" rel="noopener noreferrer">hamivideo 陸劇館</a>
+    </div>
+
+    <!-- 4. Gimy 劇迷 (非正規但亞洲內容王者，保持原清單要求) -->
+    <div class="site-item">
+      <div class="site-info">
+        <div class="site-name">
+          Gimy · 劇迷
+          <span class="badge-risk">高風險｜跳轉多</span>
+        </div>
+        <div class="site-desc">繁體中文圈最大宗的盜版影劇站，陸劇、韓劇、動漫齊全，充斥大量彈跳廣告與釣魚連結，域名字尾常變換 (.cc/.ai/.to)。</div>
+      </div>
+      <a href="https://gimytw.cc/" class="site-link" target="_blank" rel="noopener noreferrer">gimytw.cc</a>
+    </div>
+
+    <!-- 5. 小鴨影音 Dramaq (老牌亞洲資源) -->
+    <div class="site-item">
+      <div class="site-info">
+        <div class="site-name">
+          小鴨影音 · Dramaq
+          <span class="badge-risk">高風險｜惡意廣告</span>
+        </div>
+        <div class="site-desc">老牌「小鴨」系列，台港陸劇及電影，播放源多為第三方嵌入，常跳出假中毒警告或強制下載，亞洲劇存量豐富。</div>
+      </div>
+      <a href="https://777tv.ai/" class="site-link" target="_blank" rel="noopener noreferrer">777tv.ai</a>
+    </div>
+
+    <!-- 6. KissAsian / 韓劇TV 亞洲專門 -->
+    <div class="site-item">
+      <div class="site-info">
+        <div class="site-name">
+          KissAsian · 亞洲影劇
+          <span class="badge-risk mid">彈窗高風險</span>
+        </div>
+        <div class="site-desc">主打亞洲戲劇、動畫和陸劇，經典「假播放按鈕」，每點一次就彈出賭博廣告，多個鏡像站。內容以韓劇/陸劇/日劇為核心。</div>
+      </div>
+      <a href="https://kissasia.biz/" class="site-link" target="_blank" rel="noopener noreferrer">https://kissasia.biz/</a>
+    </div>
+
+    <!-- 7. ETTV · 易TV 老式繁體資源 -->
+    <div class="site-item">
+      <div class="site-info">
+        <div class="site-name">
+          ETTV · 易TV
+          <span class="badge-risk">高風險誘導</span>
+        </div>
+        <div class="site-desc">老式繁體戲劇站，收錄香港、台灣舊劇，陸續有亞洲經典劇集，充斥「下載播放器」騙局，易感染間諜軟體。</div>
+      </div>
+      <a href="https://ettv.cc" class="site-link" target="_blank" rel="noopener noreferrer">ettv.cc</a>
+    </div>
+
+    <!-- 8. 123Movies / Fmovies (歐美為主但亞洲部分亦有收錄) 保持多元性 -->
+    <div class="site-item">
+      <div class="site-info">
+        <div class="site-name">
+          123Movies / Fmovies
+          <span class="badge-risk">極高風險｜惡意程式</span>
+        </div>
+        <div class="site-desc">全球知名的盜版串流網絡，歐美電影、影集為主，但也包含部分日韓劇集。複製站點無數，點擊即可能遭遇強制跳轉。</div>
+      </div>
+      <a href="https://ww8.123moviesfree.net/" class="site-link" target="_blank" rel="noopener noreferrer">123moviesfree.net</a>
+    </div>
+
+    <!-- 9. BFlix / Bmovies (模擬Netflix) -->
+    <div class="site-item">
+      <div class="site-info">
+        <div class="site-name">
+          BFlix · Bmovies
+          <span class="badge-risk mid">中高風險</span>
+        </div>
+        <div class="site-desc">仿Netflix介面，提供多語字幕、大量新片包含亞洲電影，須關閉廣告阻擋器才能播放，易跳出偽造驗證碼詐騙。</div>
+      </div>
+      <a href="https://bflix.com.tr/home/" class="site-link" target="_blank" rel="noopener noreferrer">bflix.com.tr</a>
+    </div>
+
+    <!-- 10. SolarMovie / Soap2day 衍生 -->
+    <div class="site-item">
+      <div class="site-info">
+        <div class="site-name">
+          SolarMovie · Soap2day
+          <span class="badge-risk">高風險｜挖礦指令碼</span>
+        </div>
+        <div class="site-desc">Soap2day 關站後的繼承者，UI簡潔但暗藏瀏覽器挖礦，HD片源包含部分亞洲影劇，惡意重定向頻繁。</div>
+      </div>
+      <a href="https://ww25.soap2day.day/" class="site-link" target="_blank" rel="noopener noreferrer">soap2day.day</a>
+    </div>
+
+    <!-- 11. Lookmovie · 2embed -->
+    <div class="site-item">
+      <div class="site-info">
+        <div class="site-name">
+          Lookmovie · 2embed
+          <span class="badge-risk mid">中度風險</span>
+        </div>
+        <div class="site-desc">介面較乾淨，廣告量稍少，但依然是未授權聚合站。需註冊才能記錄片單，可能洩漏信箱資訊，亞洲內容中等。</div>
+      </div>
+      <a href="https://lookmovie2.to" class="site-link" target="_blank" rel="noopener noreferrer">lookmovie2.to</a>
+    </div>
+
+    <!-- 12. Cineb / Vmovee 高畫質歐美為重 -->
+    <div class="site-item">
+      <div class="site-info">
+        <div class="site-name">
+          Cineb · Vmovee
+          <span class="badge-risk mid">中度風險</span>
+        </div>
+        <div class="site-desc">歐美電影、1080p 畫質不錯，但伺服器常跳出色情廣告與偽造的系統更新警告，亞洲區較少但可供參考。</div>
+      </div>
+      <a href="https://cineb.live/movies" class="site-link" target="_blank" rel="noopener noreferrer">cineb.live</a>
+    </div>
+
+    <!-- 13. Popcorn Time (軟體) -->
+    <div class="site-item">
+      <div class="site-info">
+        <div class="site-name">
+          Popcorn Time (軟體)
+          <span class="badge-risk mid">BT串流｜法律風險</span>
+        </div>
+        <div class="site-desc">基於 BitTorrent 的串流應用程式，不是網站。畫質高但同時上傳影片，容易被版權方追蹤，建議搭VPN。支援全球影集含亞洲熱門。</div>
+      </div>
+      <a href="https://watch.popcorntime.app/" class="site-link" target="_blank" rel="noopener noreferrer">popcorntime.app</a>
+    </div>
+  </div>
+
+  <div class="small-note">
+    <i class="fas fa-info-circle"></i> <strong>排序說明</strong>：為了符合亞洲內容優先，上方前三個為<i class="fas fa-check-circle" style="color:#2b7a3e;"></i> 正版授權平台（愛奇藝、LiTV、Hami Video），提供安全穩定的陸劇/台劇/韓劇資源。<br>
+    其餘為非正規串流清單（Gimy、小鴨、KissAsian 等）專注亞洲戲劇，但務必注意高風險與廣告威脅。請隨時保持資安意識，建議使用正版平台或公共圖書館資源。
+  </div>
+  <hr>
+  <div style="font-size: 0.68rem; text-align: center; margin-top: 0.6rem; color: #7f8c8d;">
+    ⚡ 僅為資訊展示 | 不負責第三方內容 | 連結可能隨時失效 | 2026-05
+  </div>
+</div>
+</body>
+</html>
