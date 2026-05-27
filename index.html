@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#1f2b46">
+  <meta name="description" content="合法正版平台優先 + 非正規資源觀察名單 — 僅供認識網路生態、研究參考。">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%231f2b46' width='192' height='192'/><text x='50%' y='50%' font-size='120' font-weight='bold' fill='%23ff9800' text-anchor='middle' dominant-baseline='central'>📺</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%231f2b46' width='180' height='180' rx='40'/><text x='50%' y='50%' font-size='100' font-weight='bold' fill='%23ff9800' text-anchor='middle' dominant-baseline='central'>📺</text></svg>">
   <title>影視迷航 · 亞洲影劇串流資源清單</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -23,6 +28,44 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .install-btn {
+      background: linear-gradient(145deg, #ff9800, #fb8c00);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+    }
+
+    .install-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 152, 0, 0.4);
+    }
+
+    .install-btn:active {
+      transform: translateY(0);
+    }
+
+    .install-btn.show {
+      display: flex;
     }
 
     .hero {
@@ -188,6 +231,9 @@
       body {
         padding: 1rem;
       }
+      .top-bar {
+        justify-content: center;
+      }
       .site-item {
         flex-direction: column;
         align-items: flex-start;
@@ -202,6 +248,14 @@
 </head>
 <body>
 <div class="container">
+  <div class="top-bar">
+    <div></div>
+    <button id="installBtn" class="install-btn">
+      <i class="fas fa-download"></i>
+      <span>下載應用</span>
+    </button>
+  </div>
+
   <div class="hero">
     <h1>📺 亞洲影劇 · 串流地圖</h1>
     <div class="sub">
@@ -211,7 +265,7 @@
 
   <div class="warning-banner">
     <i class="fas fa-shield-alt"></i>
-    <span><strong>⚠️ 資安與法律提醒</strong> 正版平台相對安全；灰色地帶網站常有彈窗、釣魚或挖礦腳本。點擊非正規連結前建議使用擋廣告擴充、勿輸入個資，並留意版權風險。</span>
+    <span><strong>⚠️ 資安與法律提醒</strong> 正版平台相對安全；灰色地帶網站常有彈窗、釣魚或挖礦腳本。點擊非正規連結前建議使用擋廣告擴充、VPN與防毒軟體。</span>
   </div>
 
   <!-- 更新後排序：亞洲友善內容擺置最前 (正版 + 知名亞洲影劇免費/混合站) -->
@@ -223,7 +277,7 @@
           iQiyi 愛奇藝 · 正版陸韓劇
           <span class="badge-legal">官方授權｜部分免費</span>
         </div>
-        <div class="site-desc">亞洲最大正版影音平台之一，陸劇、韓劇、台劇、動漫、綜藝豐富。提供免費觀看區（含廣告），畫質穩定無惡意軟體，繁體中文介面友善。</div>
+        <div class="site-desc">亞洲最大正版影音平台之一，陸劇、韓劇、台劇、動漫、綜藝豐富。提供免費觀看區（含廣告），畫質穩定無惡意軟體，繁中介面友善。</div>
       </div>
       <a href="https://www.iq.com" class="site-link" target="_blank" rel="noopener noreferrer">iQ.com 戲劇館</a>
     </div>
@@ -281,7 +335,7 @@
       <div class="site-info">
         <div class="site-name">
           KissAsian · 亞洲影劇
-          <span class="badge-risk mid">彈窗高風險</span>
+          <span class="badge-risk badge-mid">彈窗高風險</span>
         </div>
         <div class="site-desc">主打亞洲戲劇、動畫和陸劇，經典「假播放按鈕」，每點一次就彈出賭博廣告，多個鏡像站。內容以韓劇/陸劇/日劇為核心。</div>
       </div>
@@ -317,7 +371,7 @@
       <div class="site-info">
         <div class="site-name">
           BFlix · Bmovies
-          <span class="badge-risk mid">中高風險</span>
+          <span class="badge-risk badge-mid">中高風險</span>
         </div>
         <div class="site-desc">仿Netflix介面，提供多語字幕、大量新片包含亞洲電影，須關閉廣告阻擋器才能播放，易跳出偽造驗證碼詐騙。</div>
       </div>
@@ -341,7 +395,7 @@
       <div class="site-info">
         <div class="site-name">
           Lookmovie · 2embed
-          <span class="badge-risk mid">中度風險</span>
+          <span class="badge-risk badge-mid">中度風險</span>
         </div>
         <div class="site-desc">介面較乾淨，廣告量稍少，但依然是未授權聚合站。需註冊才能記錄片單，可能洩漏信箱資訊，亞洲內容中等。</div>
       </div>
@@ -353,7 +407,7 @@
       <div class="site-info">
         <div class="site-name">
           Cineb · Vmovee
-          <span class="badge-risk mid">中度風險</span>
+          <span class="badge-risk badge-mid">中度風險</span>
         </div>
         <div class="site-desc">歐美電影、1080p 畫質不錯，但伺服器常跳出色情廣告與偽造的系統更新警告，亞洲區較少但可供參考。</div>
       </div>
@@ -365,22 +419,62 @@
       <div class="site-info">
         <div class="site-name">
           Popcorn Time (軟體)
-          <span class="badge-risk mid">BT串流｜法律風險</span>
+          <span class="badge-risk badge-mid">BT串流｜法律風險</span>
         </div>
-        <div class="site-desc">基於 BitTorrent 的串流應用程式，不是網站。畫質高但同時上傳影片，容易被版權方追蹤，建議搭VPN。支援全球影集含亞洲熱門。</div>
+        <div class="site-desc">基於 BitTorrent 的串流應用程式，不是網站。畫質高但同時上傳影片，容易被版權方追蹤，建議搭VPN。支援全球影集含亞洲熱劇。</div>
       </div>
       <a href="https://watch.popcorntime.app/" class="site-link" target="_blank" rel="noopener noreferrer">popcorntime.app</a>
     </div>
   </div>
 
   <div class="small-note">
-    <i class="fas fa-info-circle"></i> <strong>排序說明</strong>：為了符合亞洲內容優先，上方前三個為<i class="fas fa-check-circle" style="color:#2b7a3e;"></i> 正版授權平台（愛奇藝、LiTV、Hami Video），提供安全穩定的陸劇/台劇/韓劇資源。<br>
-    其餘為非正規串流清單（Gimy、小鴨、KissAsian 等）專注亞洲戲劇，但務必注意高風險與廣告威脅。請隨時保持資安意識，建議使用正版平台或公共圖書館資源。
+    <i class="fas fa-info-circle"></i> <strong>排序說明</strong>：為了符合亞洲內容優先，上方前三個為<i class="fas fa-check-circle" style="color:#2b7a3e;"></i> 正版授權平台（官方安全），其餘為非正規串流清單（Gimy、小鴨、KissAsian 等）專注亞洲戲劇，但務必注意高風險與廣告威脅。請隨時保持資安意識，建議使用正版平台或公共圖書館資源。
   </div>
   <hr>
   <div style="font-size: 0.68rem; text-align: center; margin-top: 0.6rem; color: #7f8c8d;">
-    ⚡ 僅為資訊展示 | 不負責第三方內容 | 連結可能隨時失效 | 2026-05
+    ⚡ 僅為資訊展示 | 不負責第三方內容 | 連結可能隨時失效 | 2026-05 | <i class="fas fa-mobile-alt"></i> 支援 PWA 離線使用
   </div>
 </div>
+
+<script>
+  // Service Worker registration
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(err => {
+      console.log('Service Worker registration failed:', err);
+    });
+  }
+
+  // PWA Install prompt handling
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Stash the event for later use
+    deferredPrompt = e;
+    // Show the install button
+    installBtn.classList.add('show');
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      // Show the install prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User response to the install prompt: ${outcome}`);
+      // Optionally, send analytics event
+      // We no longer need the prompt.  Clear it up.
+      deferredPrompt = null;
+      // Hide the install button
+      installBtn.classList.remove('show');
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    console.log('PWA was installed');
+  });
+</script>
 </body>
 </html>
