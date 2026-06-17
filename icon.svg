@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="tvgogo">
+  <defs>
+    <style><![CDATA[
+      @font-face {
+        font-family: Fredoka;
+        font-style: normal;
+        font-weight: 600;
+        src: url(https://fonts.gstatic.com/s/fredoka/v17/X7nP4b87HvSqjb_WIi2yDCRwoQ_k7367_B-i2yQag0-mac3OLyX8EemK.woff2) format('woff2');
+      }
+      .logo {
+        fill: #ffffff;
+        font-family: Fredoka, sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-anchor: middle;
+      }
+      .tv { font-size: 76px; }
+      .gogo { font-size: 38px; }
+    ]]></style>
+  </defs>
+  <rect width="192" height="192" fill="#3d6fd9" rx="28"/>
+  <text class="logo" x="96" y="0">
+    <tspan class="tv" x="96" dy="88">tv</tspan>
+    <tspan class="gogo" x="96" dy="46">gogo</tspan>
+  </text>
+</svg>

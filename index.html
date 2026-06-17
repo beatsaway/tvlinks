@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#3d6fd9">
+  <meta name="description" content="亞洲影劇串流資源清單">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml" id="app-icon">
+  <link rel="apple-touch-icon" href="icon.svg" id="app-apple-icon">
+  <title>tvgogo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Noto+Sans+TC:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --text: #1a1a1a;
+      --sub: #4a4a4a;
+      --hairline: #ebeae6;
+      --header-bg: #3d6fd9;
+      --header-bg-hover: #3562c4;
+      --icon-bg: var(--header-bg);
+      --icon-fg: #ffffff;
+      --icon-label: tvgogo;
+      --icon-tv-size: 76px;
+      --icon-gogo-size: 38px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      font-family: "Noto Sans TC", "Helvetica Neue", sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+      background: var(--header-bg);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .header-inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .brand {
+      grid-column: 2;
+      justify-self: center;
+      font-family: "Fredoka", sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: lowercase;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .install-btn {
+      grid-column: 3;
+      justify-self: end;
+      display: none;
+      font: inherit;
+      font-size: 0.8125rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.88);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem 0;
+    }
+
+    .install-btn:hover { color: #fff; }
+    .install-btn.show { display: block; }
+
+    .main {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    .site-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .site-item {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      padding: 0.75rem 0;
+    }
+
+    .site-item:hover b { color: #000; }
+
+    .site-item b {
+      display: inline;
+      font-size: 1.1875rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--text);
+      line-height: 1.5;
+      transition: color 0.2s;
+    }
+
+    .site-emoji {
+      margin-right: 0.35em;
+    }
+
+    [class^="badge-"] {
+      display: inline;
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--sub);
+      letter-spacing: 0.02em;
+      margin-left: 0.5rem;
+    }
+
+    .site-item small {
+      display: block;
+      color: var(--sub);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.85;
+      margin: 0.6rem 0 0.75rem;
+    }
+
+    .site-item em {
+      font-style: normal;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #3d3d3d;
+    }
+
+    .foot {
+      margin-top: 3rem;
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--sub);
+      text-align: center;
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 520px) {
+      body { font-size: 1.0625rem; }
+      .header-inner { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .main { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .site-item b { font-size: 1.125rem; }
+      .site-item small { font-size: 0.975rem; }
+      .site-list { gap: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <span class="brand">tvgogo</span>
+    <button id="installBtn" class="install-btn" type="button">安裝</button>
+  </div>
+</header>
+<main class="main">
+  <!-- 更新後排序：亞洲友善內容擺置最前 (正版 + 知名亞洲影劇免費/混合站) -->
+  <div class="site-list">
+    <!-- 1. HKAnime 港式粵配動漫 -->
+    <a href="https://www.hkanime.com/" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">🇭🇰</span>HKAnime · 港式粵配動漫</b><span class="badge-risk badge-mid">彈窗風險｜粵語配音</span><small>專為香港觀眾而設，收錄大量日本動畫粵語配音（粵配）版本，繁中介面，港人熟悉嘅觀看體驗。動漫種類齊全，適合想聽廣東話配音嘅用家。</small><em>hkanime.com</em></a>
+
+    <!-- 2. 楓林網 8maple (台灣影劇站) -->
+    <a href="https://8maple.st/" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">🍁</span>楓林網 · 8maple</b><span class="badge-risk badge-mid">彈窗風險｜繁中影劇</span><small>台灣繁中影劇站，陸韓台日劇、電影、綜藝、動漫齊全，更新快。</small><em>8maple.st</em></a>
+
+    <!-- 3. iQiyi 愛奇藝 (正版, 亞洲內容豐富) -->
+    <a href="https://www.iq.com" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">🎬</span>iQiyi 愛奇藝 · 正版陸韓劇</b><span class="badge-legal">官方授權｜部分免費</span><small>亞洲最大正版影音平台之一，陸劇、韓劇、台劇、動漫、綜藝豐富。提供免費觀看區（含廣告），畫質穩定無惡意軟體，繁中介面友善。</small><em>iQ.com 戲劇館</em></a>
+
+    <!-- 2. LiTV 立視線上影視 (正版, 台灣/陸劇/韓劇) -->
+    <a href="https://www.litv.tv" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">📺</span>LiTV 線上影視</b><span class="badge-legal">正版｜合法串流</span><small>台灣合法OTT，提供大量台劇、陸劇、韓劇、動漫與電影。部分內容可免費觀看，介面乾淨，無侵入式廣告。</small><em>litv.tv 戲劇頻道</em></a>
+
+    <!-- 3. Hami Video 中華電信 (正版, 陸劇/台劇/韓綜) -->
+    <a href="https://hamivideo.hinet.net" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">📡</span>Hami Video 影劇館⁺</b><span class="badge-legal">官方平台｜高畫質</span><small>中華電信正版影音服務，陸劇、台劇、韓劇、動漫齊全，提供免費試看區與單點/月租，安全無毒，亞洲內容深度友好。</small><em>hamivideo 陸劇館</em></a>
+
+    <!-- 4. Gimy 劇迷 (非正規但亞洲內容王者，保持原清單要求) -->
+    <a href="https://gimytw.cc/" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">🎭</span>Gimy · 劇迷</b><span class="badge-risk">高風險｜跳轉多</span><small>繁體中文圈最大宗的盜版影劇站，陸劇、韓劇、動漫齊全，充斥大量彈跳廣告與釣魚連結，域名字尾常變換 (.cc/.ai/.to)。</small><em>gimytw.cc</em></a>
+
+    <!-- 5. 小鴨影音 Dramaq (老牌亞洲資源) -->
+    <a href="https://777tv.ai/" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">🦆</span>小鴨影音 · Dramaq</b><span class="badge-risk">高風險｜惡意廣告</span><small>老牌「小鴨」系列，台港陸劇及電影，播放源多為第三方嵌入，常跳出假中毒警告或強制下載，亞洲劇存量豐富。</small><em>777tv.ai</em></a>
+
+    <!-- 6. KissAsian / 韓劇TV 亞洲專門 -->
+    <a href="https://kissasia.biz/" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">🌏</span>KissAsian · 亞洲影劇</b><span class="badge-risk badge-mid">彈窗高風險</span><small>主打亞洲戲劇、動畫和陸劇，經典「假播放按鈕」，每點一次就彈出賭博廣告，多個鏡像站。內容以韓劇/陸劇/日劇為核心。</small><em>https://kissasia.biz/</em></a>
+
+    <!-- 7. ETTV · 易TV 老式繁體資源 -->
+    <a href="https://ettv.cc" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">📼</span>ETTV · 易TV</b><span class="badge-risk">高風險誘導</span><small>老式繁體戲劇站，收錄香港、台灣舊劇，陸續有亞洲經典劇集，充斥「下載播放器」騙局，易感染間諜軟體。</small><em>ettv.cc</em></a>
+
+    <!-- 8. 123Movies / Fmovies (歐美為主但亞洲部分亦有收錄) 保持多元性 -->
+    <a href="https://ww8.123moviesfree.net/" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">🎞️</span>123Movies / Fmovies</b><span class="badge-risk">極高風險｜惡意程式</span><small>全球知名的盜版串流網絡，歐美電影、影集為主，但也包含部分日韓劇集。複製站點無數，點擊即可能遭遇強制跳轉。</small><em>123moviesfree.net</em></a>
+
+    <!-- 9. BFlix / Bmovies (模擬Netflix) -->
+    <a href="https://bflix.com.tr/home/" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">🍿</span>BFlix · Bmovies</b><span class="badge-risk badge-mid">中高風險</span><small>仿Netflix介面，提供多語字幕、大量新片包含亞洲電影，須關閉廣告阻擋器才能播放，易跳出偽造驗證碼詐騙。</small><em>bflix.com.tr</em></a>
+
+    <!-- 10. SolarMovie / Soap2day 衍生 -->
+    <a href="https://ww25.soap2day.day/" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">☀️</span>SolarMovie · Soap2day</b><span class="badge-risk">高風險｜挖礦指令碼</span><small>Soap2day 關站後的繼承者，UI簡潔但暗藏瀏覽器挖礦，HD片源包含部分亞洲影劇，惡意重定向頻繁。</small><em>soap2day.day</em></a>
+
+    <!-- 11. Lookmovie · 2embed -->
+    <a href="https://lookmovie2.to" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">👀</span>Lookmovie · 2embed</b><span class="badge-risk badge-mid">中度風險</span><small>介面較乾淨，廣告量稍少，但依然是未授權聚合站。需註冊才能記錄片單，可能洩漏信箱資訊，亞洲內容中等。</small><em>lookmovie2.to</em></a>
+
+    <!-- 12. Cineb / Vmovee 高畫質歐美為重 -->
+    <a href="https://cineb.live/movies" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">🎥</span>Cineb · Vmovee</b><span class="badge-risk badge-mid">中度風險</span><small>歐美電影、1080p 畫質不錯，但伺服器常跳出色情廣告與偽造的系統更新警告，亞洲區較少但可供參考。</small><em>cineb.live</em></a>
+
+    <!-- 13. Popcorn Time (軟體) -->
+    <a href="https://watch.popcorntime.app/" class="site-item" target="_blank" rel="noopener noreferrer"><b><span class="site-emoji" aria-hidden="true">⏯️</span>Popcorn Time (軟體)</b><span class="badge-risk badge-mid">BT串流｜法律風險</span><small>基於 BitTorrent 的串流應用程式，不是網站。畫質高但同時上傳影片，容易被版權方追蹤，建議搭VPN。支援全球影集含亞洲熱劇。</small><em>popcorntime.app</em></a>
+  </div>
+
+  <p class="foot">僅供參考 · 連結可能失效 · 2026</p>
+</main>
+
+<script>
+  const FREDOKA_WOFF = 'https://fonts.gstatic.com/s/fredoka/v17/X7nP4b87HvSqjb_WIi2yDCRwoQ_k7367_B-i2yQag0-mac3OLyX8EemK.woff2';
+
+  function syncAppIcon() {
+    const r = getComputedStyle(document.documentElement);
+    const bg = r.getPropertyValue('--icon-bg').trim();
+    const fg = r.getPropertyValue('--icon-fg').trim();
+    const tvSize = r.getPropertyValue('--icon-tv-size').trim();
+    const gogoSize = r.getPropertyValue('--icon-gogo-size').trim();
+    const makeSvg = (dim, tv, gogo, tvDy, gogoDy) =>
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${dim} ${dim}" role="img" aria-label="tvgogo"><defs><style>@font-face{font-family:Fredoka;font-weight:600;src:url(${FREDOKA_WOFF}) format('woff2');}.logo{fill:${fg};font-family:Fredoka,sans-serif;font-weight:600;letter-spacing:.03em;text-anchor:middle;}.tv{font-size:${tv};}.gogo{font-size:${gogo};}</style></defs><rect width="${dim}" height="${dim}" fill="${bg}" rx="28"/><text class="logo" x="50%" y="0"><tspan class="tv" x="50%" dy="${tvDy}">tv</tspan><tspan class="gogo" x="50%" dy="${gogoDy}">gogo</tspan></text></svg>`;
+    const toDataUri = (svg) => 'data:image/svg+xml,' + encodeURIComponent(svg);
+    const icon = document.getElementById('app-icon');
+    const apple = document.getElementById('app-apple-icon');
+    if (icon) icon.href = toDataUri(makeSvg(192, tvSize, gogoSize, '88', '46'));
+    if (apple) apple.href = toDataUri(makeSvg(180, '71px', '36px', '82', '43'));
+  }
+
+  syncAppIcon();
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(err => {
+      console.log('Service Worker registration failed:', err);
+    });
+  }
+
+  // PWA Install prompt handling
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Stash the event for later use
+    deferredPrompt = e;
+    // Show the install button
+    installBtn.classList.add('show');
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      // Show the install prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User response to the install prompt: ${outcome}`);
+      // Optionally, send analytics event
+      // We no longer need the prompt.  Clear it up.
+      deferredPrompt = null;
+      // Hide the install button
+      installBtn.classList.remove('show');
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    console.log('PWA was installed');
+  });
+</script>
+</body>
+</html>

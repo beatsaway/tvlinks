@@ -1,0 +1,40 @@
+{
+  "name": "tvgogo",
+  "short_name": "tvgogo",
+  "description": "亞洲影劇串流資源清單",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf9f7",
+  "theme_color": "#3d6fd9",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["entertainment"],
+  "shortcuts": [
+    {
+      "name": "HKAnime 粵配動漫",
+      "short_name": "HKAnime",
+      "description": "香港粵語配音動漫",
+      "url": "https://www.hkanime.com/"
+    },
+    {
+      "name": "正版平台",
+      "short_name": "正版",
+      "description": "合法正版影音平台",
+      "url": "/?tab=legal"
+    }
+  ]
+}
